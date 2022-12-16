@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:test/screen/pokemon.dart';
+
 class Pokedex extends StatefulWidget {
   const Pokedex({super.key});
 
@@ -55,6 +57,16 @@ class _Pokedex extends State<Pokedex> {
                       "Paralela",
                       style: TextStyle(color: Colors.amber, fontSize: 15),
                     ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Pokemon(
+                              name: pokemon["name"],
+                              url: pokemon["url"],
+                            ),
+                          ));
+                    },
                     title: Text(pokemon["name"]),
                   );
                 },
