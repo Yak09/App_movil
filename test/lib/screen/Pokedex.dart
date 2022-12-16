@@ -55,7 +55,8 @@ class _Pokedex extends State<Pokedex> {
                     leading: const Icon(Icons.catching_pokemon),
                     trailing: const Text(
                       "Paralela",
-                      style: TextStyle(color: Colors.amber, fontSize: 15),
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 19, 15, 5), fontSize: 15),
                     ),
                     onTap: () {
                       Navigator.push(
