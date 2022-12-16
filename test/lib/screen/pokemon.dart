@@ -17,6 +17,7 @@ class Pokemon extends StatefulWidget {
 class _PokemonState extends State<Pokemon> {
   Future<dynamic> getPokemon(String url) async {
     // La URL de la Poke API que devuelve un listado de pokemon
+
     Uri poke = Uri.parse(url);
 
     // Hacemos una solicitud HTTP GET a la URL
@@ -85,6 +86,14 @@ class _PokemonState extends State<Pokemon> {
             ),
       };
 
+  bool _isFavorited = false;
+
+  void _toggleFavorited() {
+    setState(() {
+      _isFavorited = !_isFavorited;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,6 +111,15 @@ class _PokemonState extends State<Pokemon> {
                   child: Image.network(
                     pokemon["sprites"]["front_default"],
                     scale: 0.5,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: TextButton(
+                    child: Text(_isFavorited
+                        ? 'Quitar de favoritos'
+                        : 'Añadir a favoritos'),
+                    onPressed: _toggleFavorited,
                   ),
                 ),
                 Padding(
@@ -141,15 +159,3 @@ class _PokemonState extends State<Pokemon> {
     );
   }
 }
-
-/* 
-ID
-Nombre
-Altura
-Peso
-Él o los tipos
-Formas
-Habilidades
-Ubicación
-Sprite o imagen
-*/
